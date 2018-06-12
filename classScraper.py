@@ -31,7 +31,7 @@ for course in courseOfferingsId: #Performs login authentication and downloads co
     login = courseSession.get(loginUrl, params=paramaters)
     loginTree = html.fromstring(login.content)
     loginAuth = loginTree.xpath(r'//form//input[@type="hidden"]') #find all hidden authentication attributes to add to the payload
-    payload = {x.attrib["name"]: x.attrib["value"] for x in loginAuth}
+    payload = {pair.attrib["name"]: pair.attrib["value"] for pair in loginAuth}
 
     #print(payload)
 
